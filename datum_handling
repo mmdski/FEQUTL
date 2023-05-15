@@ -1,0 +1,37 @@
+5 November 2007
+
+After some bad starts we need to revise how FEQ and FEQUTL handle datums under
+the new system.  I had originally setup FEQUTL to do some vertical datum shifting.
+However that has run into some conflicts.  Thus we want to back out and now force
+FEQUTL to check for the vertical datum and the unit system.  We need to make sure
+that no unshifted datum sneaks through.  The same for the unit system.  The 
+horizontal grid is not yet effective other than a point of information.  The 
+same for the basis.  The EASTING and NORTHING values of course are for the horizontal
+grid so their value is of secondary use right now.  They may play a greater 
+role in future. 
+
+First trial at a rule:
+
+1. The default values for the location/datum items if their input is missing
+is "MISSING".     The default value of G_ZONE is "OMIT".  We will set all the 
+other global values to the same default value. 
+
+2. If G_ZONE is the default value.  We will not change any value for the table
+location/datum info.  They will remain whatever they are and if they are at the
+default-only ZONE need be at the default, they will not be printed anywhere. 
+In this mode master input files that no nothing of these values should 
+results that are the same. 
+
+3.  Remove any global datum shift.  Thus FEQUTL will not do any changing, just 
+like FEQ but more so.  There will be no shift of any kind.  The datum will be defined
+by what is in the input. 
+
+4.  If one of the loc/datum items is not default then all of them must be except
+for the EASTING and NORTHING values.  
+
+5. If G_VDATUM is not OMIT, then its value must be matched for every function
+table in run except if a function table with the value of NONE for VDATUM appears.
+
+6. If G_UNITSYS is not OMIT, same as for G_VDATUM.
+
+

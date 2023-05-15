@@ -1,0 +1,37 @@
+C     Values used to keep track of a bottom slot in a cross section.
+
+      INTEGER SLOT_PRESENT
+
+      REAL NSLOT, WSLOT, ESLOT, YSLOT, RD, TZERO, EXPFAC
+
+      COMMON/ABSLOT/ SLOT_PRESENT, NSLOT, WSLOT, ESLOT, YSLOT,
+     A               RD, TZERO, EXPFAC
+
+      SAVE /ABSLOT/
+
+C     SLOT_PRESENT: 0 no slot. 1 triangular slot, 2 exponential slot
+C     NSLOT:  Manning's n for the slot if nslot > 0.  If nslot < 0.0 
+c             use the average of the Manning's n's at the edges of the slot
+c             and multiply by abs(nslot).  E. g. -1.2 computes the average value
+c             of manning's n from the two bounding values in the cross section
+c             and multiplies this averge by 1.2 to get the manning's n for the slot
+C     WSLOT: width of the slot at the invert elevation of the cross section for a triangular
+c            slot.  For the default exponential slot, it also gives the width of the slot
+c            at the section invert.  If non-default values of rd are used, then the
+c            meaning may differ. 
+C     ESLOT: elevation of the invert of the slot.
+C     YSLOT: distance from slot invert to the cross section invert.
+
+c     RD - factor on yslot to compute the y0 value for the exponential slot. 
+c          default value= 0.379376194959581.  This value together with the default 
+c          value of tzero has some convenient properties. 
+c     TZERO - width of the triangular section that forms the bottom portion of the 
+c             exponential slot.  Default value = 0.1*rd*wslot.  This default gives
+c             an exponential slot with a width at the top of WSLOT.   A value of 
+c             wslot = 1/rd gives an area equal to the triangular slot with a 
+c             top width of 1.0.  
+c     EXPFAC - factor on the exponent in the exponential channel. Default value=1.0
+c              expfac > 1 gives a top-width increase larger than the default. 
+c             
+C     Only one of ESLOT or YSLOT is used.  YSLOT is the better choice for consistent 
+c     interpolation between sections. 

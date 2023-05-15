@@ -1,0 +1,11 @@
+C     Common block for flapgate on culvert.
+
+      COMMON/FLAPGATE/ FLAP
+
+      REAL FLAP
+
+      SAVE /FLAPGATE/
+
+
+C     If FLAP=0.0 then no gate is present. Otherwise FLAP is a 
+C     factor on the internal headloss coefficient. 

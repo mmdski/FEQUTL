@@ -1,0 +1,77 @@
+
+      COMMON/XS3COM/ ADRXS3, Q3, Z3, ZB3, Y3, T3, DT3, A3, J3, K3, DK3, 
+     A               BET3, DBET3, ALP3, DALP3, ZTEL3, Z3P, Y3P,
+     B    Y3C, D3, Q3C, Y3STAR, Q3FREE, Y3FREE, A3FULL, J3Z43,
+     C    CD2T6, AP2T6, BT2T6, CD61T6, AP61T6, BT61T6, CD1, CD2, CD61,
+     D    CD6, Z3PTY6, CD1T6, Z3PEST, AVH2, AVH61, BT3ATD, AP3ATD,
+     E    CC2T5, CC5, Y3TY52, YCTY52, BT2T5, AP2T5, Y3TY5, Y3LIM5,
+     F    BT3AT5, AP3AT5, CD5T4, Y3LTY2, Y3LTY5, Y3LTY1,
+     G    CC1T5, BT1T5, AP1T5, Y3TY51, AP1T6, BT1T6
+      
+      INTEGER ADRXS3
+
+      REAL Q3, Z3, ZB3, Y3, T3, DT3, A3, J3, K3, DK3, BET3, DBET3,
+     A     ALP3, DALP3, ZTEL3, Z3P, Y3P, Y3C, D3, Q3C, Y3STAR,
+     B     Q3FREE, Y3FREE, A3FULL, J3Z43,
+     C    CD2T6, AP2T6, BT2T6, CD61T6, AP61T6, BT61T6, CD1, CD2, CD61,
+     D    CD6, Z3PTY6, CD1T6, Z3PEST, AVH2, AVH61, BT3ATD, AP3ATD,
+     E    CC2T5, CC5, Y3TY52, YCTY52, BT2T5, AP2T5, Y3TY5, Y3LIM5,
+     F    BT3AT5, AP3AT5, CD5T4, Y3LTY2, Y3LTY5, Y3LTY1,
+     G    CC1T5, BT1T5, AP1T5, Y3TY51, AP1T6, BT1T6
+
+C     CD1- if 0.0 type 1 flow has not been checked, if > 0 type 1
+C          flow has been checked and found to exist and its limit 
+C          values have been found, if < 0 type 1 flow does not exist.
+C     CD2T6- coef. of discharge forcing full flow to match flow
+C            at the type 2 flow limit.
+C     AP2T6 - kinetic energy flux coefficient forcing the full
+C             flow kinetic energy flux to match the flux 
+C             at the type 2 limit.
+C     BT2T6- momentum flux coefficient forcing the full flow
+C            momentum flux to match the flux at the type 2 limit.
+C     CD61T6- coef. of discharge forcing full flow to match flow
+C             at the type 61 limit.
+C     CD1T6- coef. of discharge forcing full flow to match flow
+C            at the type 1 limit
+C
+C     AP61T6- same as AP2T6 for type 61.
+C     BT61T6- same as AP2T6 for type 61.
+C     CD2- coef. of discharge for type 2 flow at the type 2 limit.
+C     CD61- coef. of discharge for type 61 flow at the type 61 limit.
+C     CD6- coef. of discharge for type 6 flow.
+C     Z3PTY6- piezometric level at section 3 at the type 6 limit.
+C     AVH2- area for velocity head at the type 2 limit.
+C     AVH61- area for velocity head at the type 61 limit.
+C     BT3ATD- beta at section 3 when barrel is full(at D!)
+C     AP3ATD- alpha at section 3 when the barrel is full(at D!)
+C     CC2T5 - contraction coefficient for type 5 at the type 2 flow
+C             limit. 
+C     CC1T5 - contraction coefficient for type 5 at the type 1 flow
+C             limit.
+C     CC5- contraction coefficient for type 5 at its lower limit
+C          and above.
+C     Y3TY52- depth at section 3 at the lower limit of type 52 flow
+C             giving the transistion between type 2 and type 5.
+C     Y3TY51- depth at section 3 at the lower limit of type 51 flow
+C             giving the transistion between type 1 and type 5.
+C     BT2T5-  beta at section 3 to correct for difference between
+C             exit momentum flux at lower limit of type 52 and 
+C             upper limit of type 2. 
+C     BT1T5-  beta at section 3 to correct for difference between
+C             exit momentum flux at lower limit of type 51 and 
+C             upper limit of type 1. 
+C     AP2T5-  alpha analogous to BT2T5
+C     AP1T5-  alpha analogous to BT1T5
+C     Y3TY5-  depth at section 3 at the lower limit of type 5 flow
+C     BT3AT5- beta for type 5 flow limit
+C     AP3AT5- alpha for type 5 flow limit
+C     CD5T4- coefficient of discharge that forces a type 4 equation
+C            to match the type 5, 51, or 52 flow at the full-flow-
+C            inducing level at section 43.  
+C     Y3LTY2- depth at section 3 at the type 2 limit, that is, 
+C             critical depth. 
+C     Y3LTY1- submergence depth at section 3  at the limit of
+C             type 1 flow. 
+C     Y3LTY5- the full-flow-inducing value of piezometric level
+C             relative to the invert at section 3 for flow types
+C             5, 51, and 52. 

@@ -1,0 +1,9 @@
+C     Common block for finding submerged weir flow contact
+C     with gate lip in UFGCULV
+
+      INTEGER STD6, GETY2
+      REAL HDATUM, Z4B, Z1
+      REAL*8 HG
+
+      COMMON /Y4SWC/HG, STD6, GETY2, HDATUM, Z4B, Z1
+

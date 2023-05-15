@@ -1,0 +1,9 @@
+
+      COMMON/XS4COM/ ADRXS4, Q4, Z4, ZB4, Y4, T4, DT4, A4, J4, K4, DK4, 
+     A               BET4, DBET4, ALP4, DALP4, ZTEL4, Y4C, Q4C
+      
+      INTEGER ADRXS4
+
+      REAL Q4, Z4, ZB4, Y4, T4, DT4, A4, J4, K4, DK4, BET4, DBET4,
+     A     ALP4, DALP4, ZTEL4, Y4C, Q4C
+

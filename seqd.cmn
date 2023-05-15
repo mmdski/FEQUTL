@@ -1,0 +1,5 @@
+C     Common block for FIND_SEQENT_DEPTH
+
+      REAL*8 MVC, G, QSQR
+
+      COMMON/SEQDC/ MVC, G, QSQR

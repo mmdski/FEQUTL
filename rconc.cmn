@@ -1,0 +1,8 @@
+C     Common for finding contraction coefficient for type 5 flow.
+
+      INTEGER ADR
+
+      REAL CDIS, HOVERD, AFULL, D, H, DZVC, EVC, VHF
+
+      COMMON/RCONC/ CDIS, HOVERD, AFULL, D, ADR, H, DZVC, EVC, VHF
+

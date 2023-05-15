@@ -1,0 +1,16 @@
+C     Common block for underflow gate computations.  These values
+C     are often used in residual functions.  
+
+      INTEGER APPTAB, DEPTAB
+
+      REAL Y1, Y2, Y3, Y4, Y5, A1, A4, A5, J3, J4, Z1B, Z2B, Z3B, Z4B,
+     A     YT, TT, DTT, AT, JT, KT, DKT, BETA, ALPHA, QCT, QT, 
+     B     ALPHA1, BETA4,  HG, AG, BG, CD, CC, G, TWOG, DALPHA, DBETA,
+     C     QSQR, DZ, J4ATY3, ALPHA4
+      
+      COMMON/UFCOM/APPTAB, DEPTAB, Y1, Y2, Y3, Y4, Y5, A1, A4, 
+     A             A5, J3, J4, Z1B, Z2B, Z3B, Z4B, 
+     B     YT, TT, DTT, AT, JT, KT, DKT, BETA, ALPHA, QCT, QT, 
+     C     ALPHA1, BETA4,  HG, AG, BG, CD, CC, G, TWOG, DALPHA,
+     D     DBETA, QSQR, DZ, J4ATY3, ALPHA4
+      

@@ -1,0 +1,6 @@
+C     Common for function NDRSD in FEQUTL
+
+      COMMON/NDRSDC/ ADR, FLOW, RTSBOT
+      INTEGER ADR
+      REAL FLOW, RTSBOT
+

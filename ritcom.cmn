@@ -1,0 +1,7 @@
+C     Common for function FRIT in FEQUTL
+
+      INTEGER WTAB, QTAB, OFF, RITOUT
+      REAL W1, V1, W, A, Q
+      COMMON/RITCOM/ W1, V1, W, A, Q, WTAB, QTAB, OFF, RITOUT
+ 
+

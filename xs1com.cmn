@@ -1,0 +1,23 @@
+
+      COMMON/XS1COM/ ADRXS1, Q1, Z1, ZB1, Y1, T1, DT1, A1, J1, K1, DK1, 
+     A               BET1, DBET1, ALP1, DALP1, ZTEL1, YUPTRU,
+     B               Z1TY1, Z1TY6, Z1TY2, Z1TY61, Z1TY5, Z1TY52,
+     C               Z1TY51, Z1TY1L
+      
+      INTEGER ADRXS1
+
+      REAL Q1, Z1, ZB1, Y1, T1, DT1, A1, J1, K1, DK1, BET1, DBET1,
+     A     ALP1, DALP1, ZTEL1, YUPTRU, Z1TY1, Z1TY6, Z1TY2, Z1TY61,
+     B     Z1TY5, Z1TY52, Z1TY51, Z1TY1L
+
+
+C     Z1TY1- elevation at section 1 at type 1 limit if it exists
+C     Z1TY1L-elevation at section 1 at lower limit of type 1 if it exists
+C     Z1TY6- elevation at section 1 at start of type 6 if it exists
+C     Z1TY2- elevation at upper limit of type 2 flow if it exists
+C     Z1TY61- elevation at upper limt of type 61 if it exists
+C     Z1TY5- elevation at section at start of type 5 if it exists
+C     Z1TY52- elevation at section 1 at lower limit of type 52(
+C             type 2 to type 5 flow) 
+C     Z1TY51- elevation at section 1 at lower limit of type 51(
+C             type 1 to type 5 flow) 

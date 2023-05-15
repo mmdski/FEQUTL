@@ -1,0 +1,11 @@
+C     Common for RT1GY2 residual function.
+
+      COMMON/Y1GY2/ ZSBRDF, CONF, OUTUN, D
+
+      INTEGER CONF, OUTUN
+
+      REAL ZSBRDF, D
+
+      CHARACTER*8 CLASS
+
+      COMMON/Y1GY2C/ CLASS

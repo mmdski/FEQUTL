@@ -1,0 +1,19 @@
+C     FLOOD WAY COMMON BLOCK
+
+      CHARACTER*4 FLDOPT(PMXTAB)
+
+      INTEGER FLOOD
+
+      REAL GLBELV, GLBCON
+
+      REAL FLDELV(PMXTAB), FLDLT(PMXTAB), FLDRT(PMXTAB), FLDLOS(PMXTAB),
+     A     FEQBOT(PMXTAB), fldflow(pmxtab), fldarea(pmxtab)
+
+
+      COMMON/FLDWAY/ FLOOD, GLBELV, GLBCON, FLDELV, FLDLT,
+     A               FLDRT, FLDLOS, FEQBOT, fldflow,
+     b               fldarea
+
+      COMMON/FLDWYC/ FLDOPT
+      
+      SAVE /FLDWYC/, /FLDWAY/

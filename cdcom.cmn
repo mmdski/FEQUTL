@@ -1,0 +1,25 @@
+
+      COMMON/CDCOM/ CD, C123, C46, TY6SUP, C5, CC, KRB, KWING, KPROJ,
+     A              RATFLG, AVH, VHL, 
+     B              TB6ADR, TB7ADR, TB8ADR, RBVAL, WWANGL,
+     C              TB15AD, TB16AD, RGHFAC, HOVERD, NBAR, ROVDLM,
+     D              TB5ADR, TB21ADR, TB22ADR,
+     E              TB24ADR, TBLPDADR, BVANGL, LPOVD,
+     F              AFHWA, CFHWA, YFHWA, SFHWA
+
+      INTEGER TY6SUP, RATFLG, TB6ADR, TB7ADR, TB8ADR,
+     A        TB15AD, TB16AD(4), TB5ADR, TB21ADR, TB22ADR,
+     B        TB24ADR, TBLPDADR
+
+      REAL CD, C123, C46, C5, KRB, KWING, KPROJ, AVH, VHL,
+     A     RBVAL, WWANGL, CC, RGHFAC, HOVERD, NBAR, ROVDLM, BVANGL,
+     B     LPOVD
+
+
+C     Add values for support of FHWA type 5 scheme. Oct. 3, 2001
+      REAL AFHWA, CFHWA, YFHWA, SFHWA
+
+C     AFHWA - value of a
+C     CFHWA - value of c
+C     YFHWA - value of Y
+C     SFHWA - slope of culvert near entrance. 

@@ -1,0 +1,8 @@
+C     Common for function RTY7C in FEQUTL
+
+      COMMON/RTY7C/ OUTUN, EF,  Z1T, Z4T, ZSUB, T7FLAG, Q3ADR, Y3ADR,
+     A              DDN
+
+      INTEGER OUTUN, EF, T7FLAG, Q3ADR, Y3ADR
+      REAL  Z1T, Z4T, ZSUB, DDN
+

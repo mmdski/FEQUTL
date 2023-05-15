@@ -1,0 +1,7 @@
+C     Common for function SBER in FEQUTL
+
+      COMMON/SBERC/ RHS, ADRS, QT, KR, DX, SE, KACC, KDEC, AR, ALPR, D
+      INTEGER ADRS
+      REAL RHS, QT, KR, DX, SE, KACC, KDEC, AR, ALPR, D
+ 
+

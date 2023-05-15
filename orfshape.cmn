@@ -1,0 +1,6 @@
+C     Common block for orifice shape description and computation.
+      INTEGER ORIFICE_SHAPE_TAB, ORF_NUM
+      DOUBLE PRECISION W_OVER_D, ORF_W(15), ORF_X(15)
+      COMMON /ORF_SHAPE/ W_OVER_D, ORF_W, ORF_X, ORF_NUM,
+     A         ORIFICE_SHAPE_TAB
+

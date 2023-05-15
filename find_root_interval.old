@@ -1,0 +1,138 @@
+      SUBROUTINE FIND_ROOT_INTERVAL(STDOUT, F,
+     M                              XMIN, XMAX, XMID,
+     O                              FL, FR)
+
+C     Find a root interval given the initial range, (XMIN, XMAX)
+C     and an estimated root, XMID.  Return with addjusted root
+C     range and the function values that change sign.  
+
+C     Use for SBFCHN first and then extend.
+
+      IMPLICIT NONE
+      INTEGER STDOUT
+      REAL XMIN, XMAX
+      REAL*8 F, FL, FR, XMID
+
+      EXTERNAL F
+
+C     Local
+      INTEGER KNT, SLOPE
+
+
+      REAL*8 FAC, FM, XM, XL, XR, FT, XT, FMAX, FMIN, FMID
+
+      DATA FAC/0.1/
+C     *****************************FORMAT*******************************
+50    FORMAT(/,' *ERR:XXX* FIND_ROOT_INTERVAL: Reached maximum',
+     A         ' argument and no sign change found.')
+52    FORMAT(/,' *ERR:XXX* FIND_ROOT_INTERVAL: Reached minimum',
+     A         ' argument and no sign change found.')
+54    FORMAT(' XMIN=',1PE10.3,' XMAX=',1PE10.3,
+     A               ' FL=',1PE10.3,' FR=',1PE10.3)
+70    FORMAT(/,' *ERR/BUG* Residual function in FIND_ROOT_INTERVAL',
+     A  '  is constant at trial value.')
+72    FORMAT(/,' *ERR/BUG* No sign change in FIND_ROOT_INTERVAL',
+     A         ' after 300 iterations')
+C***********************************************************************
+      FMAX = F(XMAX)      
+      FMIN = F(XMIN)
+      FMID = F(XMID)
+      WRITE(STDOUT,58) XMIN, XMID, XMAX
+58    FORMAT(/,' FIND_ROOT_INTERVAL: XMIN=',1PE10.3,' XMID=',1PE10.3,
+     A       ' XMAX=',1PE10.3)
+      WRITE(STDOUT,59) FMIN, FMID, FMAX
+59    FORMAT(/,' FMIN=',1PE12.5' FMID=',1PE12.5,' FMAX=',1PE12.5)
+
+
+      XM = XMID
+      FM = F(XM)
+
+C     Estimate the sign of the slope at XM
+      XT = XM + 0.05*(XMAX - XM)
+      FT = F(XT)
+      IF(FT.GT.FM) THEN
+        SLOPE = 1
+      ELSEIF(FT.LT.FM) THEN
+        SLOPE = -1
+      ELSE
+C       Value appears to be constant.
+        WRITE(STDOUT,70) 
+        STOP 'Abnormal stop.  Error/Bug found.'
+      ENDIF
+
+      KNT = 0
+100   CONTINUE
+        WRITE(STDOUT,*) ' '
+        WRITE(STDOUT,90) SLOPE, XM, FM
+90    FORMAT(' SLOPE=',I5,' XM=',1PE12.5,' FM=',1PE12.5)
+        KNT = KNT + 1
+        IF(KNT.GT.300) THEN
+          WRITE(STDOUT,72)
+          STOP 'Abnormal stop.  Error/Bug found'
+        ENDIF
+        IF(SLOPE.LT.0) THEN
+          IF(FM.GT.0.D0) THEN
+            XL = XM
+            FL = FM
+            XR = XM + FAC*(XMAX - XM)
+            FR = F(XR)
+            IF(FR.GT.0.0) THEN
+              XM = XR
+              FM = FR
+              IF(FR.GT.FL) THEN
+                SLOPE = 1
+              ENDIF
+              GOTO 100
+            ENDIF
+          ELSE
+C           FM < 0 here
+            XR = XM
+            FR = FM
+            XL = XM + FAC*(XMIN - XM)
+            FL = F(XL)
+            IF(FL.LT.0.D0) THEN
+              XM = XL 
+              FM = FL
+              IF(FR.GT.FL) THEN
+                SLOPE = 1
+              ENDIF
+              GOTO 100
+            ENDIF
+          ENDIF
+        ELSE
+C         SLOPE > 0 here
+          IF(FM.GT.0.D0) THEN
+            XR = XM
+            FR = FM
+            XL = XM + FAC*(XMIN - XM)
+            FL = F(XL)
+            IF(FL.GT.0.D0) THEN
+              XM = XL
+              FM = FL
+              IF(FR.LT.FL) THEN
+                SLOPE = -1
+              ENDIF
+              GOTO 100
+            ENDIF
+          ELSE
+C           FM < 0 here
+            XL = XM
+            FL = FM
+            XR = XM + FAC*(XMAX - XM)
+            FR = F(XR)
+            IF(FR.LT.0.D0) THEN
+              XM = XR
+              FM = FR
+              IF(FR.LT.FL) THEN
+                SLOPE = -1
+              ENDIF
+              GOTO 100
+            ENDIF
+          ENDIF
+        ENDIF
+      XMIN = XL
+      XMAX = XR
+      XMID = 0.5*(XL + XR)
+      WRITE(STDOUT,54) XMIN, XMAX, FL, FR 
+      RETURN
+      END

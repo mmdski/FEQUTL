@@ -1,0 +1,20 @@
+C     Common to hold values needed for computing various limits
+C     for culvert flow types. 
+
+      COMMON/TYPLIM/ Q1L, Z1L, Y1L, T1L, DT1L, A1L, J1L, 
+     A               K1L, DK1L,  BET1L, DBET1L, ALP1L, DALP1L, 
+     B               Q2L, Q3L, A2PART, A3PART, A2L, A3L,
+     C               K2L, K3L, Y3PART, Z3PART, HHTYPE, Z2L, Y2L,
+     D               T2L, DT2L, J2L, DK2L, BET2L, DBET2L, ALP2L, DALP2L
+ 
+      INTEGER HHTYPE
+            
+      REAL Q1L, Z1L, Y1L, T1L, DT1L, A1L, J1L, 
+     A               K1L, DK1L,  BET1L, DBET1L, ALP1L, DALP1L, 
+     B               Q2L, Q3L, A2PART, A3PART, A2L, A3L,
+     C               K2L, K3L, Y3PART, Z3PART, Z2L, Y2L,
+     D               T2L, DT2L, J2L, DK2L, BET2L, DBET2L, ALP2L, DALP2L
+
+
+
+

@@ -1,0 +1,10 @@
+      INTEGER MAXR_chnrtITM, MAXC_chnrtITM, MAXDP_chnrtITM
+      PARAMETER (MAXR_chnrtITM=7,  MAXC_chnrtITM=7, MAXDP_chnrtITM=6)
+      INTEGER chnrtITMITAB(MAXR_chnrtITM)
+      REAL chnrtITMFTAB(MAXR_chnrtITM)
+      REAL*8 chnrtITMDTAB(MAXDP_chnrtITM)
+      CHARACTER*64 chnrtITMCTAB(MAXC_chnrtITM)
+
+      COMMON/chnrtITM_COM/  chnrtITMDTAB, chnrtITMITAB, chnrtITMFTAB
+
+      COMMON/chnrtITM_COMC/ chnrtITMCTAB

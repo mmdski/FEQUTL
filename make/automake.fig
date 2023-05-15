@@ -1,0 +1,96 @@
+#=========================================================================
+#  Sample AUTOMAKE configuration file (LF90)
+#  (lines beginning with a # are comments)
+#=========================================================================
+#  A simple case consists of 3 lines
+#
+#    LF95     specifies that we are using Lahey's LF90 (3.50 or later)
+#             AUTOMAKE will expect to find an LF90 generated module
+#             definition file (modtable.txt)
+#    FILES=   to specify the source files (using wild-cards)
+#    TARGET=  to specify the executable file name
+#=========================================================================
+
+LF95
+FILES=*.FOR
+and
+FILES=*.f90
+TARGET=fequtl.exe
+COMPILE=@LF95 %fi   -c -nprefetch -nsav -trace -trap dio -nchk -nstchk  -tpp  -o1 -ap
+LINK=@lf95 @%rf -exe %ex  -winconsole -stack 500000 
+#=========================================================================
+#  If you use the LF90 keyword, the following COMPILE= and LINK= commands
+#  are assumed.  They may be over-ridden as required (by specifying
+#  COMPILE= and/or LINK= explicitly).
+#  
+#  COMPILE=@lf90 -c %fi -mod %mo
+#  LINK=@lf90 @%rf -exe %ex -mod %mo
+#
+#  The following placemarkers may be used in the COMPILE= command
+#
+#  %sd - the directory containing the source file (includes trailing "\")
+#  %sf - the source file name (no directory or extension)
+#  %se - the source file extension (includes leading ".")
+#  %fi - equivalent to %sd%sf%se
+#  %od - the directory containing object files (includes trailing "\")
+#                       (specified using OBJDIR=, see below)
+#  %oe - the object file extension (includes leading ".")
+#                       (specified using OBJEXT=, see below)
+#  %id - the INCLUDE file search path
+#                       (specified using INCLUDE=, see below)
+#  %mo - the name of directory containing modules
+#                       (specified using MODULE= - see below)
+#  %rf - the name of a response file, created by AUTOMAKE, containing
+#        a list of source files.  If %RF is present, the compiler is invoked
+#        only once.
+#
+#  The following placemarkers may be used in the LINK= command
+#
+#  %ob - expands to the object files corresponding to the source files
+#        specified using FILES=.  For example if FILES=*.for, and
+#        OBJEXT=.obj (the default), %ob expands to "*.obj".  If there
+#        are several compilation phases, %ob combines the object files
+#        for all phases.  For example, given
+#
+#            FILES=*.for 
+#            AND
+#            FILES=extra\*.for
+#
+#        %ob expands to "*.obj extra\*.obj"
+#
+#  %rf - expands to the name of a response file, created by AUTOMAKE
+#        containing the names of object files to be linked.
+#  %ex - the executable file name as specified using TARGET=
+#  %od - as defined for COMPILE=
+#  %oe - as defined for COMPILE=
+#  %mo - as defined for COMPILE=
+#
+#  Additional commands may be added as required:
+#
+#  OBJDIR=    specifies the name of the directory containing object files
+#                                         (default same as source files)
+#  OBJEXT=    specifies the object file extension         (default .obj)
+#  INCLUDE=   specifies a search path for INCLUDE files
+#             (e.g.  INCLUDE=;\usr\include;\include)      (default none)
+#  MODULE=    specifies the name of the directory containing module files
+#                                         (default same as source files)
+#
+#  Other commands, including QUITONERROR, NOQUITONERROR, MAKEMAKE, DEBUG
+#  and CHECK= are described in the manual.
+#
+#  If the files to be compiled cannot be represented by a single wild-card
+#  or if you need a different compiler or different compile options for
+#  different files, use the AND keyword to specify different sections.
+#
+#    e.g.      COMPILE=lf90 -c %fi
+#              FILES=fsource\*.for
+#                AND
+#              COMPILE=cc -c %fi
+#              FILES=csource\*.c
+#
+#  The COMPILE=, OBJEXT=, INCLUDE= and MODULE= keywords may
+#  be specified for each phase as necessary. If they are not specified
+#  they retain their previous value.  OBJDIR= defaults to the source
+#  directory in each section.
+#
+

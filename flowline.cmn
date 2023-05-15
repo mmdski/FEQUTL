@@ -1,0 +1,53 @@
+C     Data structures and parameters for handling assignment
+C     of Easting and Northing values to cross section tables
+C     interpolated by XSINTERP. 
+
+      INTEGER FL_POINT_MAX
+
+      PARAMETER (FL_POINT_MAX=5000)
+
+      INTEGER FL_PRESENT, FL_PNT_KNT, L
+
+      REAL*8 RM_ORIGIN, S_ATRMORG, RM_FACTOR, S_BEGIN
+
+      REAL*8 FL_DISTANCE(FL_POINT_MAX), FL_EASTING(FL_POINT_MAX), 
+     A       FL_NORTHING(FL_POINT_MAX)
+
+
+      COMMON /FLITEMS/ RM_ORIGIN, S_ATRMORG, RM_FACTOR, S_BEGIN,
+     A  FL_DISTANCE, FL_EASTING, FL_NORTHING,
+     B  FL_PRESENT, FL_PNT_KNT, L
+ 
+
+C     Definitions
+
+C     L - initial pointer in search. 
+C     FL_PNT_KNT - number of points on the current flow line.
+C     RM_ORIGIN - distance along the flow line at the point
+C                 defining the stationing to be used in FEQ.
+C                 This is often in miles, called river miles
+C                 but it need not be.  This is any convenient
+C                 point that has a given or assigned value of
+C                 stationing.  It need not be zero!
+
+C     S_ATRMORG-  Distance along the flow line at RM_ORIGIN in the units used
+C                 for the coordinate points that define the polyline
+C                 representing the flow line.
+
+C     RM_FACTOR-  number used to multiply the units used 
+C                 for RM_ORIGIN to get the units used in S_ATRMORG.
+C                 If the stationing in FEQ is in miles and the 
+C                 coordinate points on the flow line are given in
+C                 feet then RM_FACTOR = 5280. 
+
+C     S_BEGIN- initial value to use for the cumulative distance along
+C              flow line in its coordinate units.  
+
+C     FL_PRESENT- 1 if a flow line is known, 0 otherwise
+
+C     FL_DISTANCE(*)-distance along the flow line at each coordinate point
+C                     on the polyline in FEQ stationing units. 
+
+C     FL_EASTING(*)- the x-coordinate for a flow-line point
+C     FL_NORTHING(*)- the y-coordinate for a flow-line point
+  

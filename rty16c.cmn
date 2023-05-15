@@ -1,0 +1,12 @@
+C     Common block for residual function for defining part of the
+C     transition between type 1 flow and type 6 flow.
+
+      COMMON/RTY16C/  Z1TRUE, IUP, IDN, OUTUN, DUP, DDN, ZSUB,
+     A                TA1, AEXIT, EF, NSF, Z1LIM
+
+      INTEGER IUP, IDN, OUTUN, EF, NSF
+
+      REAL Z1TRUE, DUP, DDN, ZSUB, TA1, AEXIT, Z1LIM
+
+      COMMON/RTY16CC/  CLASS
+      CHARACTER*8 CLASS

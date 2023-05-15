@@ -1,0 +1,6 @@
+C     Common for function CRQRE in FEQUTL
+ 
+      COMMON/CRQREC/ ADR, FLOW, EF
+      INTEGER ADR, EF
+      REAL FLOW
+

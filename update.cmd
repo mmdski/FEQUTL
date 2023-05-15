@@ -1,0 +1,1 @@
+copy *.* J:\usf\fequtl

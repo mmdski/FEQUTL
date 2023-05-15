@@ -1,0 +1,6 @@
+C     Common for function DPM26C in FEQUTL
+
+      COMMON/DPM26C/ OUTUN, RMFLUX, M43
+      INTEGER OUTUN
+      REAL RMFLUX, M43
+

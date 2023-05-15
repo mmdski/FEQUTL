@@ -1,0 +1,6 @@
+C     Common block for FIND_Y43_FROM_Y4  
+      INTEGER TAB43, TABEXIT
+      REAL G, M4, QSQR, ZB43, ZB3, COSTHETA
+
+      COMMON /Y4_TO_43/ G, M4, QSQR, ZB43, ZB3,
+     A                  COSTHETA, TAB43, TABEXIT

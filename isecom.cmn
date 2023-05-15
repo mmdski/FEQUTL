@@ -1,0 +1,6 @@
+C     Common for function INVTSE
+
+      INTEGER ADRST, TYPE, OPUNIT
+      REAL QT, ET, GRAVT
+      COMMON/ISECOM/ ADRST, QT, ET, GRAVT, TYPE, OPUNIT
+

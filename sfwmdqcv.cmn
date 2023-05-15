@@ -1,0 +1,15 @@
+C     Common block for finding free flow.
+
+      CHARACTER*3 CODE
+
+      INTEGER GTYPE, BARREL
+
+      REAL BOARD, C, CW, D, HWE, INEL, K, L, N, OUTEL, SWB, SWE, 
+     A                  W, WB, QA
+
+      COMMON/SF_FRQ/GTYPE, BARREL, BOARD, C, CW, D, HWE, INEL, K,
+     A              L, N, OUTEL, SWB, SWE, W, WB, QA
+
+      COMMON/SF_FRQC/ CODE
+
+      SAVE /SF_FRQ/, /SF_FRQC/

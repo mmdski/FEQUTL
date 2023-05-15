@@ -1,0 +1,7 @@
+C     common for fit.for
+
+      INTEGER N
+
+      DOUBLE PRECISION EPS, A, B, POWER, OFFSET, FACTOR
+
+      COMMON/BEST/ EPS, A, B, POWER, OFFSET, FACTOR, N

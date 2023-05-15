@@ -1,0 +1,6 @@
+C     Common for function RTYS in FEQUTL
+
+      COMMON/RTYSC/ OUT, EF, IUP, IDN
+      INTEGER OUT, EF, IUP, IDN
+ 
+

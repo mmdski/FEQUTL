@@ -1,0 +1,11 @@
+      INTEGER MAXR_lctnITM, MAXC_lctnITM, MAXDP_lctnITM
+      PARAMETER (MAXR_lctnITM=4,  MAXC_lctnITM=5, MAXDP_lctnITM=2)
+      INTEGER lctnITMITAB(MAXR_lctnITM)
+      REAL lctnITMFTAB(MAXR_lctnITM)
+      REAL*8 lctnITMDTAB(MAXDP_lctnITM)
+      CHARACTER*64 lctnITMCTAB(MAXC_lctnITM)
+
+      COMMON/lctnITM_COM/  lctnITMDTAB, lctnITMITAB, lctnITMFTAB
+
+      COMMON/lctnITM_COMC/ lctnITMCTAB
+

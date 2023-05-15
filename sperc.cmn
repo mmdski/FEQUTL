@@ -1,0 +1,8 @@
+C     Common for function SPER in FEQUTL
+
+      COMMON/SPERC/ RHS, ADR, QR, QL, KL, DX, AL, ALPL, KACC, KDEC, D,
+     A              SE
+      INTEGER ADR
+      REAL RHS, QR, QL, KL, DX, AL, ALPL, KACC, KDEC, D, SE
+ 
+

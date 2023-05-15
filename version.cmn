@@ -1,0 +1,11 @@
+C     Common block to allow version and date to be output
+C     at more than one point in the code.
+
+      CHARACTER  VERSION_DATE*17
+
+      REAL VERSION_NUMBER
+
+      COMMON/VERSION/ VERSION_NUMBER
+
+      COMMON/VERSIONC/ VERSION_DATE
+

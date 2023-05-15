@@ -1,0 +1,9 @@
+
+      COMMON/XS0COM/ ADRXS0, Q0, Z0, ZB0, Y0, T0, DT0, A0, J0, K0, DK0, 
+     A               BET0, DBET0, ALP0, DALP0, ZTEL0, VFAC, YC0, ZC0
+      
+      INTEGER ADRXS0
+
+      REAL Q0, Z0, ZB0, Y0, T0, DT0, A0, J0, K0, DK0, BET0, DBET0,
+     A     ALP0, DALP0, ZTEL0, VFAC, YC0, ZC0
+

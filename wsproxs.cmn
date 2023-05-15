@@ -1,0 +1,78 @@
+C     Common block for the variables needed to process WSPRO 
+C     cross sections. 
+
+C     Parameters for dimensions
+
+      INTEGER MXNFL, MXNGP, MXNSA
+
+      PARAMETER(MXNFL=3, MXNGP=100, MXNSA=20)
+
+C     AS record variables
+
+      INTEGER ASFLAG
+
+      REAL SRD, SKEW, EK, CK, VSLOPE
+
+C     FL record variables
+
+      INTEGER FLFLAG, IHFNO, NFL
+
+      REAL FLDAT(2*MXNFL), FLEN(MXNFL), XFL(MXNFL), YFL(MXNFL)
+
+C     GR Record
+
+      INTEGER GRFLAG, NGP
+
+      REAL GRSRD, XGR(MXNGP), YGR(MXNGP), X(MXNGP), Y(MXNGP)
+
+C     GT Record
+
+      INTEGER GTFLAG
+
+      REAL YSHIFT, XLIML, XLIMR, SCALE, XORIG
+
+C     N Record
+
+      INTEGER NFLAG, NN
+
+      REAL NVAL(2*MXNSA), BOTN(MXNSA), TOPN(MXNSA)
+
+C     ND Record
+
+      INTEGER NDFLAG, NND
+
+      REAL NNDBRK(2*MXNSA), BOTD(MXNSA), TOPD(MXNSA)
+
+
+C     SA Record
+
+      INTEGER SAFLAG, NSA, NSAT
+
+      REAL XSA(MXNSA), XSAT(MXNSA)
+
+C     XR Record
+
+      INTEGER XRFLAG, IPAVE
+
+      REAL EMBWID, USERCF
+
+C     XS Record
+
+      INTEGER XSFLAG
+
+C     XT Record
+
+      INTEGER XTFLAG, XTNGP, XTNSA
+
+      REAL XTSRD, XTXGR(MXNGP), XTYGR(MXNGP), XTXSA(MXNSA)
+
+      COMMON/WXPROX/ ASFLAG, SRD, SKEW, EK, CK, VSLOPE,
+     A   FLFLAG, IHFNO, NFL, FLDAT, FLEN, XFL, YFL,
+     B   GRFLAG, NGP, GRSRD, XGR, YGR, X, Y,
+     C   GTFLAG, YSHIFT, XLIML, XLIMR, SCALE, XORIG,
+     D   NFLAG, NN, NVAL, BOTN, TOPN,
+     E   NDFLAG, NND, BOTD, TOPD, NNDBRK,
+     F   SAFLAG, NSA, NSAT, XSA, XSAT,
+     G   XRFLAG, IPAVE, EMBWID, USERCF,
+     H   XSFLAG,
+     I   XTFLAG, XTSRD, XTNGP, XTNSA, XTXGR, XTYGR, XTXSA

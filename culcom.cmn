@@ -1,0 +1,35 @@
+
+      COMMON/CULCOM/ FRCFAC, XVEC, NSEC, ZBVEC, YVEC, YVECSB, YVECSP, 
+     A               DVEC, HLTAB, KA, KD, YCVEC, YNVEC, SFVEC, EVEC, 
+     B               IAT3D, SEVEC, IAT6D, L23, AVEC, KVEC,
+     C               LOVERD, SZERO, TY1YTD, TY1HTD, SBKIND, SBSHAPE,
+     D               SBVEC, TY5SBF
+
+      INTEGER NSEC(MNBN), HLTAB(MNBN), IAT3D, IAT6D, SBKIND, SBSHAPE
+
+      REAL XVEC(MNBN), ZBVEC(MNBN), YVECSB(MNBN), YVECSP(MNBN),
+     A     YVEC(MNBN), DVEC(MNBN), KA(MNBN), KD(MNBN), YCVEC(MNBN),
+     B     YNVEC(MNBN), SFVEC(MNBN), EVEC(MNBN), SEVEC(MNBN),
+     C     L23, AVEC(MNBN), KVEC(MNBN), LOVERD, SZERO, TY1YTD, TY1HTD,
+     D     SBVEC(MNBN), TY5SBF
+
+      DOUBLE PRECISION FRCFAC
+
+
+C     FRCFAC- friction factor to give factor for friction losses
+C             in barrel for non-prismatic full-flow that as well
+C             as prismatic full flow.
+C     TY1YTD- maximum ratio of depth to vertical diameter for 
+C             type 1 flow. 
+C     TY1HTD- maximum ratio of head at section 1 relative to 
+C             culvert invert at culvert inlet to the vertical 
+C             diamter of the culvert.  Must be less than 1.5.
+C     SBKIND- if 0 the slope of the culvert barrel is a constant,
+C             if 1 the slope of the culvert barrel varies.
+C     BSHAPE- if 0 the barrel shape is constant, that is, prismatic,
+C             if 1 the barrel shape is nonprismatic.
+C     TY5SBF- ratio of depth to vertical diameter of the culvert
+C             at the exit which causes submergence. 
+
+c Note:  25 August 2004:  SBSHAPE is apparently not used.  BSHAPE
+c is but outside of a common block.

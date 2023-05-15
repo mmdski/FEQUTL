@@ -1,0 +1,49 @@
+C     Common block for the values used in putting function tables
+C     into FTAB/ITAB and getting the same. 
+
+C     The following commands make use of the following values:
+
+C     CULVERT:
+C       Single valued ids:
+C         PUTQ- Table number for flow in the culvert
+C         PUTY2- Table number for depth at section 2
+C         PUTMF3- Table number for momentum flux out of culvert barrel
+C         PUTY3- Table number for depth at section 3.
+
+C       Multiple valued ids:
+C          GETQ- one or more table numbers specifing the flow into
+C                departure reach from overbank areas where flow was
+C                represented using the commands EMBANKQ, CHANRAT or
+C                similar command.
+C          GETMF- one or more table numbers specifing the momentum
+C                flux into the departure reach from the same sources
+C                as GETQ
+
+
+C     CHANRAT
+C       PUTQ- Table number for flow in the channel
+C       PUTMF- Table number for the momentum flux from the dns end
+C              of the channel. 
+
+C     EMBANKQ
+C       PUTQ- Table number for flow over the embankment
+C       PUTMF-Table number for momentum flux estimated for 
+C             the crest of the embankment. 
+
+C     ORIFICE
+C       PUTQ-Table number for flow through the orifice
+C       PUTMF-Table number for the momentum flux through the
+C             orifice.
+
+      INTEGER MXGET, MXOVER
+      PARAMETER ( MXGET=50, MXOVER=5+2*(MXGET+1))
+
+      INTEGER PUTQ, PUTMF, PUTMF3, PUTY2, PUTY3, GETQ(MXGET+1), 
+     A        GETMF(MXGET+1), PGOVER(MXOVER)
+
+
+      COMMON/PUTGET/PUTQ, PUTMF, PUTMF3, PUTY2, PUTY3, GETQ, GETMF
+
+      EQUIVALENCE (PUTQ,PGOVER)
+
+      SAVE /PUTGET/

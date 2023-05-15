@@ -1,0 +1,13 @@
+C     COMMON block for Finding Expansion-Contraction tables.
+
+      INTEGER XTABL, XTABR, FLG
+
+      REAL HTL, HPL, HPR, YL, YR, AL, AR, ALPHAL, ALPHAR, KL, KR,
+     A     ZBL, ZBR, KA, KD, DX, SMOOTH, GRV2, HDATUM, Q, QCL, QCR,
+     B     TGM
+
+      COMMON/FECCOM/ HTL, HPL, HPR, YL, YR, AL, AR, ALPHAL, ALPHAR,
+     A               KL, KR, XTABL, XTABR, ZBL, ZBR, KA, KD, DX,
+     B               SMOOTH, GRV2, HDATUM, Q, QCL, QCR, FLG, TGM
+
+

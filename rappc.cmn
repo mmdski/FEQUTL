@@ -1,0 +1,6 @@
+C     Common for function RAPP in FEQUTL
+
+      COMMON/RAPPC/ CDIN, CONF, VHLOSS
+      INTEGER CONF
+      REAL CDIN, VHLOSS
+ 

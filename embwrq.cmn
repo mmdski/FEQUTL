@@ -1,0 +1,22 @@
+C     Common block for key values describing the nature of weir
+C     flow.  
+
+      INTEGER HLFLAG, HPFLAG
+
+      REAL HLCRIT, HLMAX
+
+      COMMON/EMBQ/ HLFLAG, HPFLAG, HLCRIT, HLMAX
+
+      SAVE /EMBQ/
+C     HLCRIT  Ratio of piezometric head to crest breadth at boundary
+C             between low head and high head flow in the USGS 
+C             embankment-shaped weir methodology.
+C     HLMAX   Maximum value of piezometric head to crest breadth ratio
+C             above which a warning message is issued.
+C     HLFLAG  Warning message suppression flag for warnings about the
+C             piezometric head to crest breadth ratio becoming greater
+C             than HLMAX
+C     HPFLAG  Warning message suppression flag for invalid weir flow
+
+
+

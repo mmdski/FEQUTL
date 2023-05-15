@@ -1,0 +1,7 @@
+C     Common for function DEPM, and F4TO44 in FEQUTL
+
+      COMMON/DEPMC/ MFCON, M44, M3, MCASE, E44, E4
+      INTEGER MCASE
+      REAL MFCON, M44, M3, E44, E4
+ 
+

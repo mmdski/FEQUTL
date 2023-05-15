@@ -1,0 +1,132 @@
+C
+C
+C
+      SUBROUTINE   DSECANT
+     I                    (XLA, EPSARG, EPSF, EPSABS, MAXIT, XMIN, XMAX, 
+     I                     FUN,
+     M                     XRA,
+     O                     FLAG)
+ 
+C     + + + PURPOSE + + +
+C     Find a root of the function, FUN, using the secant method.
+C     XLA and XRA give the starting points.  XMAX and XMIN give the
+C     maximum and minimum values allowed for the root.  The final
+C     root is returned in XRA.  FUN is a double precision function
+C     of one argument.  All other values must be passed to FUN using
+C     a common block.  FLAG = 0: solution found. FLAG=1: MAXIT
+C     interations and no solution. FLAG=2: computed derivative is
+C     zero and the function is still larger than the tolerance.
+C     Indicates a local max or min of the function.
+ 
+      IMPLICIT NONE
+      INCLUDE 'stdun.com'
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER FLAG, MAXIT
+      REAL*8 EPSABS, EPSARG, EPSF, XLA, XMAX, XMIN, XRA
+ 
+C     + + + DUMMY ARGUMENT FUNCTIONS + + +
+      REAL*8 FUN
+ 
+C     + + +DUMMY ARGUMENT DEFINITIONS + + +
+C     XLA    - Left hand end of starting interval
+C     EPSARG - Convergence tolerance on arguments
+C     EPSF   - Convergence tolerance for function values
+C     EPSABS - Absolute convergence tolerance on arguments
+C     MAXIT  - Maximum number of iterations
+C     XMIN   - Lower limit for root
+C     XMAX   - Upper limit for root
+C     FUN    - Integrand function
+C     XRA    - Right hand end of starting interval
+C     FLAG   - Result flag
+ 
+C     + + + LOCAL VARIABLES + + +
+      INTEGER I
+      REAL*8 DF, DX, DXTEMP, FL, FR, OLDVAL, XL, XR,
+     A       DXFAC
+ 
+C     + + + INTRINSICS + + +
+      INTRINSIC ABS
+ 
+C     + + + EXTERNAL NAMES + + +
+      EXTERNAL FUN
+C***********************************************************************
+
+      XL = XLA
+      XR = XRA
+      OLDVAL = 1.D0
+      WRITE(STD6,*) ' ENTERING DSECANT. XL=',XL,' XR=',XR
+ 
+      FLAG = 0
+      FL = FUN(XL)
+      WRITE(STD6,*) ' FL=',FL
+      IF(ABS(FL).LE.EPSF) THEN
+          WRITE(STD6,*) ' Convergence on EPSF'
+        XRA = XL
+        RETURN
+      ENDIF
+      DX = XR - XL
+      DO 100 I=1,MAXIT
+        FR = FUN(XR)
+       WRITE(STD6,*) ' I=',I,' XR=',XR, ' FR=',FR
+        IF(ABS(FR).LE.EPSF) THEN
+          WRITE(STD6,*) ' Convergence on EPSF'
+          XRA = XR
+          RETURN
+        ENDIF
+        DF = FL - FR
+        WRITE(STD6,*) ' SECANT:I=',I,' FL=',FL,' FR=',FR
+        IF(DF.NE.0.0) THEN
+          DXTEMP = DX
+          OLDVAL = DX/DF
+          DX = FR*OLDVAL
+
+        
+          IF(ABS(DX).GT.3.0D0*ABS(DXTEMP)) THEN
+            IF(DX.GT.0.D0) THEN
+              DX = 3.0D0*ABS(DXTEMP)
+            ELSE
+              DX = -3.0D0*ABS(DXTEMP)
+            ENDIF
+          ENDIF
+          DXTEMP = 0.D0
+          XL = XR
+          FL = FR
+          XR = XR + DX
+          IF(XR.GE.XMAX) THEN
+            XR = 0.5*(XL + XMAX)
+            DXTEMP = XR - XL
+          ELSEIF(XR.LE.XMIN) THEN
+            XR = 0.5*(XL + XMIN)
+            DXTEMP = XR - XL
+          ENDIF
+
+
+          WRITE(STD6,*) ' DX=',DX,' XR=',XR
+          IF(ABS(DX/XR).LE.EPSARG.OR.ABS(DX).LE.EPSABS) THEN
+            WRITE(STD6,*) ' Convergence on ESPARG or EPSABS'
+            XRA = XR
+            RETURN
+          ENDIF
+          IF(DXTEMP.NE.0.0D0) THEN
+            DX = DXTEMP
+          ENDIF
+        ELSE
+C         DF = 0. SIGNAL POSSIBLE ERROR
+          XRA = XR
+          IF(ABS(FR).LE.EPSF) THEN
+            WRITE(STD6,*) ' Convergence when DF=0'
+            RETURN
+          ELSE
+            FLAG = 2
+            WRITE(STD6,*) ' No convergence when DF=0'
+            RETURN
+          ENDIF
+        ENDIF
+ 
+ 100  CONTINUE
+ 
+C     DROP THROUGH INDICATES NO CONVERGENCE WITHIN MAXIT ITERATIONS
+      FLAG = 1
+      XRA = XR
+      RETURN
+      END

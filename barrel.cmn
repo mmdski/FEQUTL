@@ -1,0 +1,93 @@
+C     Common block to use with the water-surface profile 
+C     computation in the UFGCULV command and perhaps others.
+
+C     Values that apply at a cross section location.
+
+C     STATION( ) - distance along the channel, increasing 
+C                  from upstream to downstream (may be relaxed
+C                  later).  Flow from upstream to downstream 
+C                  is treated as positive. 
+
+C     XSEC_ADRS()- initially contains the id number for the 
+C                  cross-section function table and later 
+C                  the address for the table. 
+
+C     INVERT_Z()- elevation of the cross section invert at 
+C                 location in STATION().
+
+C     VERT_DVEC()- vertical diameter of the barrel.
+
+C     INVERT_DZDX()- value of slope at the location in 
+C                 STATION if the slope is continuous. 
+C                 For future expansion or experimentation.
+
+C     INVERT_SLOPE_CAT()- category for the invert slope:
+C                 1 means continuous slope so that the slope
+C                 continuous at each STATION; and 0 means
+C                 a discontinuous slope at each station 
+ 
+C     MXNXS- maximum number of cross sections allowed 
+C                 in a description
+
+C     NXS-  number of cross sections.
+
+C     XLOC- station value for those functions that cannot be 
+C           passed the station value
+
+C     QD- flow in double precision.
+
+C     VERT_D - vertical diameter of culvert
+C     Values that apply between adjacent sections. 
+
+C     CHANNEL_VARIATION()- 1 prismatic channel, 0 non-prismatic channel
+
+C     SINE_THETA()- sine of the inclination angle of the invert when
+C                  the slope is discontinuous at both ends. 
+
+C     COSINE_THETA()- cosine of inclination angle
+
+C     Values that are used as local values in the lookup process for
+C     cross section elements. 
+
+C     At the left end of a segment between adjacent cross sections. 
+C     Left is taken as upstream end. 
+
+C     X_L- station 
+C     Z_L- invert elevation 
+C     DZDX_L- slope 
+C     ADRS_L- cross-section table address
+C     YMAX_L- maximum depth argument
+C     Similar values with an _R apply on the right end as well
+
+C     Values that apply between the section on the left and the section
+C     on the right. 
+
+C     SIN_THETA- sine of inclination angle.
+C     COS_THETA- cosine of inclination angle. 
+C     SLOPE_FLAG- 1 slope varies between sections; and 0
+C                   slope is constant between sections.
+
+      INTEGER MXNXS, MXNXSM1, NXS
+      PARAMETER(MXNXS= 10, MXNXSM1=MXNXS-1)
+
+      INTEGER INVERT_SLOPE_CAT(MXNXS), XSEC_ADRS(MXNXS),
+     A        CHANNEL_VARIATION(MXNXSM1)
+
+      REAL*8 STATION(MXNXS), INVERT_Z(MXNXS),VERT_DVEC(MXNXS),
+     A       INVERT_DZDX(MXNXS), SINE_THETA(MXNXSM1), 
+     B       COSINE_THETA(MXNXSM1), XSEC_YMAX(MXNXS),
+     C       QD, XLOC
+
+      INTEGER PRIS_FLAG, SLOPE_FLAG, ADRS_L, ADRS_R
+
+      REAL*8 X_L, Z_L, DZDX_L, YMAX_L,
+     A       X_R, Z_R, DZDX_R, YMAX_R,
+     B       SIN_THETA, COS_THETA, VERT_D
+
+
+      COMMON/UFGC1/ STATION, INVERT_Z, VERT_DVEC, INVERT_DZDX, 
+     A       SINE_THETA, COSINE_THETA, X_L, Z_L, DZDX_L,  
+     B       YMAX_L, X_R, Z_R, DZDX_R, YMAX_R, SIN_THETA, VERT_D, 
+     C       COS_THETA, XSEC_YMAX, QD, XLOC, INVERT_SLOPE_CAT, 
+     D       XSEC_ADRS, ADRS_L, ADRS_R, 
+     E       CHANNEL_VARIATION, PRIS_FLAG, SLOPE_FLAG, NXS

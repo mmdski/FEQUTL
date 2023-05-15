@@ -1,0 +1,45 @@
+      OLDHG = 0.0
+      NHG = 1
+ 100  CONTINUE
+        CALL INL80
+     I            (STDIN, STDOUT,
+     O             LINE)
+        READ(LINE,'(F10.0, I10, 4F10.0)') HGVEC(NHG), TAB2D(NHG),
+     A                      CCVAL(NHG), ANGLE(NHG)
+C     B                      MNHVEC(NHG), LIPVEC(NHG)
+        MNHVEC(NHG) = 0.0
+        LIPVEC(NHG) = 0.0
+        IF(HGVEC(NHG).LE.OLDHG) THEN
+C         Input complete.
+          NHG = NHG - 1
+        ELSE
+          OLDHG = HGVEC(NHG)
+          IF(MNHVEC(NHG).EQ.0.0) THEN
+            MNHVEC(NHG) = MINHU
+          ENDIF
+          IF(LIPVEC(NHG).EQ.0.0) THEN
+            LIPVEC(NHG) = LIPREC
+          ENDIF
+          WRITE(STDOUT,
+     A        '(F10.3,I10,F10.3,F10.1,F10.2,F10.3)') HGVEC(NHG),
+     B           TAB2D(NHG), CCVAL(NHG), ANGLE(NHG)
+C     C           MNHVEC(NHG), LIPVEC(NHG)
+          CALL TABCHK
+     I               (STDOUT, PMXTAB,
+     M                TAB2D(NHG), TABDIR, EFLAG)
+          IF(CCTAB.EQ.0.0) THEN
+C           If no table is given for contraction coefficient, then
+C           a value must be given by the user.
+            IF(CCVAL(NHG).LE.0.0.OR.CCVAL(NHG).GT.1.0) THEN
+              WRITE(STDOUT,93) CCVAL(NHG)
+               EFLAG = 1
+            ENDIF
+          ENDIF
+          NHG = NHG + 1
+          GOTO 100
+        ENDIF
+ 
+      IF(NHG.LT.2) THEN
+        WRITE(STDOUT,98)
+        EFLAG = 1
+      ENDIF

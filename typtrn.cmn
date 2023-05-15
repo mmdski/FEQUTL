@@ -1,0 +1,26 @@
+C     Common block for various parameters to handle transitional
+C     flow type behavior for the departure reach computations. 
+
+      COMMON/TYPTRN/ AVHF, CDF, BETAF, ALPHAF, Y3PF, BETA3, ALPHA3
+
+      REAL AVHF, CDF, BETAF, ALPHAF, Y3PF, BETA3, ALPHA3
+
+C     AVHF- area used for velocity head in computing losses for the
+C           transitional free flow
+C     CDF- coef. of discharge for computing losses for the transitional
+C          free flow.
+C     BETAF- value of beta to compensate for false area in the computation
+C            of the momentum flux from some free flows.  If this
+C            value is zero it means that the beta from the cross section
+C            function table should be used.  If it is non-zero it means
+C            that the free flow type was used as a transition and that
+C            the flow area of the culvert barrel outlet was falsified in 
+C            the process.
+C     ALPHAF- value of alpha to use in computing velocity head for
+C             energy loss computations. 
+C     Y3PF- depth to the piezometric level at the culvert barrel outlet
+C           for free flow limit.  
+
+C     BETA3- actual value at section 3 used in departure reach 
+C     ALPHA3- actual value at section 3.  Crudely estimated in some
+C             cases because better alternative is not available.

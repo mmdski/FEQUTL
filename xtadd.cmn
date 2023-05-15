@@ -1,0 +1,14 @@
+C     Values added to cross section tables: July 1997
+C     December 1999, June 2003
+
+      integer ws_tab
+      REAL SLOT_DEPTH, dinvert
+      REAL*8 EASTING, NORTHING
+
+      CHARACTER*16 GISID, TABID, WS_TABID
+
+      COMMON/XTADD/ EASTING, NORTHING, SLOT_DEPTH, dinvert, ws_tab
+      COMMON/XTADDC/ GISID, TABID, WS_TABID
+
+      SAVE /XTADD/, /XTADDC/
+

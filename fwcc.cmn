@@ -1,0 +1,8 @@
+C     Common block to transfer data to the residual function
+C     used to solve the the free weir limit contraction
+C     coefficient.
+
+      REAL*8 ECON, EFAC, M1, M2, HGT, STAUP
+
+      COMMON/FWCC_C/ ECON, EFAC, M1, M2, HGT, STAUP
+
